@@ -1,0 +1,18 @@
+#controller accueil
+accueil:
+    path: /
+    controller: App\Controller\AccueilController::index
+#controller visiteur
+visiteur:
+    path: /visiteur
+    controller: App\Controller\VisiteurController::index
+menuVisiteur:
+    path: /visiteur/menu
+    controller: App\Controller\VisiteurController::menu
+donnerDate:
+    path: /visiteur/menu/donnerDate
+    controller: App\Controller\VisiteurController::donnerDate
+#controller comptable
+comptable:
+    path: /comptable
+    controller: App\Controller\ComptableController::index

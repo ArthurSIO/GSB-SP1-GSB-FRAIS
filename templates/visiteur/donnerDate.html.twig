@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ConsulterController!{% endblock %}
+
+{% block body %}
+<style>
+@import url(https://fonts.googleapis.com/css?family=Vollkorn:400italic,400);
+
+body {
+  background-color: #031321; 
+  margin: 0;
+}
+nav {
+  background-color: #5AC8FB;
+  border-bottom: 1px solid #DBDDDE;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  height: 72px;
+  margin-bottom : 10px;
+}
+nav ul {
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline;
+  padding: 0px 15px 0px 15px;
+}
+nav ul li {
+  display: inline-block;
+  padding: 10px 25px 10px 25px;
+  font-family: 'Vollkorn', serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #4A4A4A;
+  text-shadow: 0 -1px 0 #000;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+nav ul a:hover {
+  border-bottom: 2px solid #4A4A4A;
+  border-radius: 2px;
+}
+.active {
+  border-bottom: 2px solid #4A4A4A;
+  border-radius: 2px;
+}
+.form {
+  float: right;
+}
+.menu {
+  float: left;
+}
+.corp{
+    width: 950px;
+    margin: auto;
+  donnerDate
+    padding: 20px;
+
+    text-align: center;
+
+    background: #eee;
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+
+}
+.pageV{
+	color : #fff;
+}
+</style>
+<nav>
+  <ul class="menu">
+    <li>Visiteur</li>
+  </ul>
+  <ul class="form">
+    <li><a href="#">Consulter Frais</a></li>
+    <li class="pageV">Menu</li>
+    <li><a href="{{path( 'accueil')}}">Déconnexion</a></li>   
+  </ul>
+</nav>
+<div class="corp">
+{% for i in 0..11 %} 
+	{{i}}
+	
+{% endfor %}
+{{dateC}}
+	<form>
+		<select type="Select" id="login">
+			{% for i in 0..11 %} 
+			<option {% if dateC == i + 1 %} selected {%endif%}>{{ moisA[i] }}{{dateC}} {{i}}</option>
+			{% endfor %}
+		</select>
+		<option></option>
+		<select type="Select" id="login">
+			
+		</select>	
+	</form>
+	
+</div>
+
+
+
+{% endblock %}
