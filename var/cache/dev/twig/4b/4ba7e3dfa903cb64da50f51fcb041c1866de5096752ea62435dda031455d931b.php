@@ -57,7 +57,7 @@ class __TwigTemplate_d6c7e18e0cd75ce7e4fb3f192900b72c90659aa1ee8d72283abccd5df43
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Hello ConsulterController!";
+        echo "Donner Date";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -92,15 +92,21 @@ class __TwigTemplate_d6c7e18e0cd75ce7e4fb3f192900b72c90659aa1ee8d72283abccd5df43
         // line 9
         echo "<div class=\"corp\">
     <h1>Saisir Mois / Année</h1>
-\t<form>
-\t\t<select type=\"Select\" id=\"login\">
-\t\t\t";
+        ";
+        // line 11
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formulaire"]) || array_key_exists("formulaire", $context) ? $context["formulaire"] : (function () { throw new RuntimeError('Variable "formulaire" does not exist.', 11, $this->source); })()), 'form_start');
+        echo "
+            <select type=\"Select\" id=\"";
+        // line 12
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formulaire"]) || array_key_exists("formulaire", $context) ? $context["formulaire"] : (function () { throw new RuntimeError('Variable "formulaire" does not exist.', 12, $this->source); })()), "mois", [], "any", false, false, false, 12), 'widget');
+        echo "\">
+\t\t";
         // line 13
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(range(0, 11));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
             echo " 
-\t\t\t<option ";
+                    <option ";
             // line 14
             if ((0 === twig_compare((isset($context["dateC"]) || array_key_exists("dateC", $context) ? $context["dateC"] : (function () { throw new RuntimeError('Variable "dateC" does not exist.', 14, $this->source); })()), ($context["i"] + 1)))) {
                 echo " selected ";
@@ -108,21 +114,38 @@ class __TwigTemplate_d6c7e18e0cd75ce7e4fb3f192900b72c90659aa1ee8d72283abccd5df43
             echo ">";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["moisA"]) || array_key_exists("moisA", $context) ? $context["moisA"] : (function () { throw new RuntimeError('Variable "moisA" does not exist.', 14, $this->source); })()), $context["i"], [], "array", false, false, false, 14), "html", null, true);
             echo "</option>
-\t\t\t";
+\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 16
-        echo "\t\t</select>
-\t\t
-\t\t<select type=\"Select\" id=\"login\">
-                    <option>20";
-        // line 19
-        echo twig_escape_filter($this->env, (isset($context["dateA"]) || array_key_exists("dateA", $context) ? $context["dateA"] : (function () { throw new RuntimeError('Variable "dateA" does not exist.', 19, $this->source); })()), "html", null, true);
-        echo "</option>\t\t\t
-\t\t</select>\t
-\t</form>
+        echo "            </select>
+            <select type=\"Select\" id=\"";
+        // line 17
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formulaire"]) || array_key_exists("formulaire", $context) ? $context["formulaire"] : (function () { throw new RuntimeError('Variable "formulaire" does not exist.', 17, $this->source); })()), "annee", [], "any", false, false, false, 17), 'widget');
+        echo "\">
+                ";
+        // line 18
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(range(0, 4));
+        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+            echo " 
+                <option>20";
+            // line 19
+            echo twig_escape_filter($this->env, ((isset($context["dateA"]) || array_key_exists("dateA", $context) ? $context["dateA"] : (function () { throw new RuntimeError('Variable "dateA" does not exist.', 19, $this->source); })()) - $context["i"]), "html", null, true);
+            echo "</option>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 21
+        echo "            </select>
+        ";
+        // line 22
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formulaire"]) || array_key_exists("formulaire", $context) ? $context["formulaire"] : (function () { throw new RuntimeError('Variable "formulaire" does not exist.', 22, $this->source); })()), 'form_end');
+        echo "
 \t
 </div>
 
@@ -146,14 +169,14 @@ class __TwigTemplate_d6c7e18e0cd75ce7e4fb3f192900b72c90659aa1ee8d72283abccd5df43
 
     public function getDebugInfo()
     {
-        return array (  122 => 19,  117 => 16,  105 => 14,  99 => 13,  93 => 9,  91 => 8,  84 => 7,  74 => 5,  67 => 4,  54 => 3,  37 => 1,);
+        return array (  147 => 22,  144 => 21,  136 => 19,  130 => 18,  126 => 17,  123 => 16,  111 => 14,  105 => 13,  101 => 12,  97 => 11,  93 => 9,  91 => 8,  84 => 7,  74 => 5,  67 => 4,  54 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
 
-{% block title %}Hello ConsulterController!{% endblock %}
+{% block title %}Donner Date{% endblock %}
 {% block stylesheets %}
     <link rel=\"stylesheet\" href=\"{{ asset('css/styles.css') }}\" type=\"text/css\" />
 {% endblock %}
@@ -161,17 +184,18 @@ class __TwigTemplate_d6c7e18e0cd75ce7e4fb3f192900b72c90659aa1ee8d72283abccd5df43
 {%include 'visiteur/enteteVisiteur.html.twig'%}
 <div class=\"corp\">
     <h1>Saisir Mois / Année</h1>
-\t<form>
-\t\t<select type=\"Select\" id=\"login\">
-\t\t\t{% for i in 0..11 %} 
-\t\t\t<option {% if dateC == i + 1 %} selected {%endif%}>{{ moisA[i] }}</option>
-\t\t\t{% endfor %}
-\t\t</select>
-\t\t
-\t\t<select type=\"Select\" id=\"login\">
-                    <option>20{{ dateA }}</option>\t\t\t
-\t\t</select>\t
-\t</form>
+        {{form_start(formulaire)}}
+            <select type=\"Select\" id=\"{{ form_widget(formulaire.mois)}}\">
+\t\t{% for i in 0..11 %} 
+                    <option {% if dateC == i + 1 %} selected {%endif%}>{{ moisA[i] }}</option>
+\t\t{% endfor %}
+            </select>
+            <select type=\"Select\" id=\"{{ form_widget(formulaire.annee)}}\">
+                {% for i in 0..4 %} 
+                <option>20{{ dateA - i }}</option>
+                {% endfor %}
+            </select>
+        {{form_end(formulaire)}}
 \t
 </div>
 

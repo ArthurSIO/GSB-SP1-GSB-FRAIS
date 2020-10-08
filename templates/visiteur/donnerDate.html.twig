@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConsulterController!{% endblock %}
+{% block title %}Donner Date{% endblock %}
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
 {% endblock %}
@@ -8,17 +8,18 @@
 {%include 'visiteur/enteteVisiteur.html.twig'%}
 <div class="corp">
     <h1>Saisir Mois / Année</h1>
-	<form>
-		<select type="Select" id="login">
-			{% for i in 0..11 %} 
-			<option {% if dateC == i + 1 %} selected {%endif%}>{{ moisA[i] }}</option>
-			{% endfor %}
-		</select>
-		
-		<select type="Select" id="login">
-                    <option>20{{ dateA }}</option>			
-		</select>	
-	</form>
+        {{form_start(formulaire)}}
+            <select type="Select" id="{{ form_widget(formulaire.mois)}}">
+		{% for i in 0..11 %} 
+                    <option {% if dateC == i + 1 %} selected {%endif%}>{{ moisA[i] }}</option>
+		{% endfor %}
+            </select>
+            <select type="Select" id="{{ form_widget(formulaire.annee)}}">
+                {% for i in 0..4 %} 
+                <option>20{{ dateA - i }}</option>
+                {% endfor %}
+            </select>
+        {{form_end(formulaire)}}
 	
 </div>
 

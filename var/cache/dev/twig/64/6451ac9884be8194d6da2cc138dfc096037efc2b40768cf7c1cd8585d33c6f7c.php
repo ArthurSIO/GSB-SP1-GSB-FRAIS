@@ -94,7 +94,12 @@ class __TwigTemplate_8ebd0aa9d5d54f73127acdd393c886f918b137fb5d5c1cc17540a7a86d6
         $this->loadTemplate("visiteur/enteteVisiteur.html.twig", "visiteur/menuVisiteur.html.twig", 11)->display($context);
         // line 12
         echo "<div class=\"corp\">
-\ttest
+    test<br />
+    ";
+        // line 14
+        echo twig_escape_filter($this->env, (isset($context["id"]) || array_key_exists("id", $context) ? $context["id"] : (function () { throw new RuntimeError('Variable "id" does not exist.', 14, $this->source); })()), "html", null, true);
+        echo "
+    
 \t
 </div>
 
@@ -116,7 +121,7 @@ class __TwigTemplate_8ebd0aa9d5d54f73127acdd393c886f918b137fb5d5c1cc17540a7a86d6
 
     public function getDebugInfo()
     {
-        return array (  96 => 12,  94 => 11,  91 => 10,  84 => 9,  74 => 6,  67 => 5,  54 => 3,  37 => 1,);
+        return array (  100 => 14,  96 => 12,  94 => 11,  91 => 10,  84 => 9,  74 => 6,  67 => 5,  54 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -133,7 +138,9 @@ class __TwigTemplate_8ebd0aa9d5d54f73127acdd393c886f918b137fb5d5c1cc17540a7a86d6
 
 {%include 'visiteur/enteteVisiteur.html.twig'%}
 <div class=\"corp\">
-\ttest
+    test<br />
+    {{id}}
+    
 \t
 </div>
 

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Consulter Fiche{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+{% endblock %}
+{% block body %}
+{%include 'visiteur/enteteVisiteur.html.twig'%}
+<div class="corp">
+    {{mois}}
+    {{annee}}
+    <table>
+        <tr>
+            <td>Etat</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {{for uneFiche in fiches}}
+    {{fiches[0]['idVisiteur']}}
+    {{endfor}}
+    </table>
+</div>
+
+
+
+{% endblock %}

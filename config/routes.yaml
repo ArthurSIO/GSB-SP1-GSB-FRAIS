@@ -12,6 +12,9 @@ menuVisiteur:
 donnerDate:
     path: /visiteur/menu/donnerDate
     controller: App\Controller\VisiteurController::donnerDate
+renseigner:
+    path: /visiteur/menu/renseigner
+    controller: App\Controller\VisiteurController::renseigner
 #controller comptable
 comptable:
     path: /comptable

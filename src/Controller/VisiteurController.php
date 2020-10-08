@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiseType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
 class VisiteurController extends AbstractController
@@ -26,7 +26,7 @@ class VisiteurController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
             $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
-            $reponse = $bdd->query('SELECT login,mdp FROM Visiteur');
+            $reponse = $bdd->query('SELECT id,login,mdp FROM Visiteur');
             $test = 0;
             while ($donnees = $reponse->fetch())
             {
@@ -35,10 +35,12 @@ class VisiteurController extends AbstractController
                     $test = 1;
                     $session = $request -> getSession();
                     $session -> set('login',$data['nom_utilisateur']);
+                    $session -> set('id',$donnees['id']);
+                    $id = $donnees['id'];
             }
         }         
         if($test == 1 ){
-            return $this->render('visiteur/menuVisiteur.html.twig',['login' => $login = $data['nom_utilisateur'] ]
+            return $this->render('visiteur/menuVisiteur.html.twig',['login' => $login = $data['nom_utilisateur'], 'id' => $id ]
             
         );
         }
@@ -51,56 +53,59 @@ class VisiteurController extends AbstractController
         return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 0]        
         );
     }
-    public function menu()
-    {
-        if(empty($_POST['nom_utilisateur'])){
-            return $this->render('visiteur/connexionVisiteur.html.twig', [
-            'controller_name' => 'RenseignerController',
-            'erreur' => $erreur = 0
-        ]);
-        }
-        $login = $_POST['nom_utilisateur'];
-        $mdp = $_POST['mdp_utilisateur'];
-        $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
-	$reponse = $bdd->query('SELECT login,mdp FROM Visiteur');
-        $test = 0;
-        while ($donnees = $reponse->fetch())
-        {
-            if($login == $donnees['login'] AND $mdp == $donnees['mdp'])
-            {    
-                $test = 1;
-            }
-        }         
-        if($test == 1 ){
-            return $this->render('visiteur/menuVisiteur.html.twig', [
-                'controller_name' => 'MenuVisiteurController',
-                'login' => $login,
-                'mdp' => $mdp
-                ]);
-        }
-        return $this->render('visiteur/connexionVisiteur.html.twig', [
-            'controller_name' => 'RenseignerController',
-            'erreur' => $erreur = 1
-        ]);
-    }
+    
     public function donnerDate(Request $request)
     {
         $session = $request -> getSession();
+        $moisA = array ("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre");
         $login = $session -> get('login');
-        $dateCa = date("y");
-        $dateCa= (int)$dateCa;
+        $id = $session -> get('id');
         $dateCm = date("m");
         $dateCm= (int)$dateCm;
-        $moisA = array ("Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"); 
+        $dateCa = date("y");
+        $dateCa = (int)$dateCa;
+        $form = $this->createFormBuilder()
+                ->add('mois')
+                ->add('annee')
+                ->add('valider', SubmitType::class)
+                ->getForm();
+        $form->handleRequest( $request );
+        $m = null;
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            for ($i = 1; $i <= 12; $i ++){
+                if($data['mois'] == $moisA[$i - 1]){
+                    $m = $i;
+                }
+            }
+            $fiches = array();
+            $date = sprintf("%02d%04d",$m,$data['annee']);
+            $data = $form->getData();
+            $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
+            $reponse = $bdd->query('SELECT * FROM FicheFrais');
+            while ($donnees = $reponse->fetch())
+            {
+                if($id == $donnees['idVisiteur'] AND $date == $donnees['mois'])
+                {
+                    array_push($fiches, $donnees);
+                }
+            }
+            return $this->render('visiteur/consulterFiches.html.twig',['mois' => $data['mois'],'annee' => $data['annee'],'login' => $login, 'fiches' =>$fiches ]
+            
+        );       
+        }        
         return $this->render('visiteur/donnerDate.html.twig', [
-            'controller_name' => 'ConsulterController',
             'moisA' => $moisA,
             'dateC' => $dateCm,
             'dateA' => $dateCa,
-            'login' => $login
-                
-            
+            'login' => $login,
+            'formulaire' => $form->createView()           
         ]);
+    }
+    public function renseigner(Request $request){
+        return $this->render('visiteur/renseignerFiche.html.twig',['login' => $login = 0]
+        );
     }
 }
 ?>
+
