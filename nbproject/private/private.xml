@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/html/GSB-FRAISv2/src/Controller/VisiteurController.php</file>
-            <file>file:/var/www/html/GSB-FRAISv2/templates/visiteur/donnerDate.html.twig</file>
-            <file>file:/var/www/html/GSB-FRAISv2/templates/visiteur/renseignerFiche.html.twig</file>
+            <file>file:/var/www/html/GSB-FRAISv2/src/Repository/VisiteurRepository.php</file>
             <file>file:/var/www/html/GSB-FRAISv2/templates/visiteur/menuVisiteur.html.twig</file>
-            <file>file:/var/www/html/GSB-FRAISv2/templates/visiteur/consulterFiches.html.twig</file>
+            <file>file:/var/www/html/GSB-FRAISv2/src/Entity/Visiteur.php</file>
         </group>
     </open-files>
 </project-private>

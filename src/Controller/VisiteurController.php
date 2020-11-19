@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Visiteur;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,30 +26,20 @@ class VisiteurController extends AbstractController
         $form->handleRequest( $request );
         if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
-            $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
-            $reponse = $bdd->query('SELECT id,login,mdp FROM Visiteur');
-            $test = 0;
-            while ($donnees = $reponse->fetch())
-            {
-                if($data['nom_utilisateur'] == $donnees['login'] AND $data['mdp_utilisateur'] == $donnees['mdp'])
-                {    
-                    $test = 1;
-                    $session = $request -> getSession();
-                    $session -> set('login',$data['nom_utilisateur']);
-                    $session -> set('id',$donnees['id']);
-                    $id = $donnees['id'];
+            $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(Visiteur::class);
+            $vi = $repositoryObjet -> findByLoginAndMdp($data['nom_utilisateur'], $data['mdp_utilisateur']);
+            if ($vi === NULL){
+                return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 1]        
+                );
             }
-        }         
-        if($test == 1 ){
-            return $this->render('visiteur/menuVisiteur.html.twig',['login' => $login = $data['nom_utilisateur'], 'id' => $id ]
-            
-        );
-        }
-        else{
-            return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 1]        
-        );
-        }
-        
+            else{
+                $session = $request -> getSession();
+                $session -> set('login',$data['nom_utilisateur']);
+                $session -> set('id',$vi[0]->getId());
+                return $this->render('visiteur/menuVisiteur.html.twig',['login' => $login = $data['nom_utilisateur']]
+                );
+            }       
         }
         return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 0]        
         );
