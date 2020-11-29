@@ -10,18 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
  * Fraisforfait
  *
  * @ORM\Table(name="FraisForfait")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FraisforfaitRepository")
  */
 class Fraisforfait
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="id", type="string", length=3, nullable=false, options={"fixed"=true})
+     * @ORM\Column(name="idFraisForfait", type="string", length=3, nullable=false, options={"fixed"=true})
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idFraisForfait;
 
     /**
      * @var string|null
@@ -52,9 +52,9 @@ class Fraisforfait
         $this->idvisiteur = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getIdFraisForfait(): ?string
     {
-        return $this->id;
+        return $this->idFraisForfait;
     }
 
     public function getLibelle(): ?string

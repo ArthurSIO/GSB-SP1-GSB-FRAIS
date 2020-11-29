@@ -216,6 +216,26 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\VisiteurController"/>
       </call>
     </service>
+    <service id="App\Repository\EtatRepository" class="App\Repository\EtatRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\FichefraisRepository" class="App\Repository\FichefraisRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\FraisforfaitRepository" class="App\Repository\FraisforfaitRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LigneFraisForfaitRepository" class="App\Repository\LigneFraisForfaitRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\LignefraishorsforfaitRepository" class="App\Repository\LignefraishorsforfaitRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\VisiteurRepository" class="App\Repository\VisiteurRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -2063,7 +2083,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.LBf.4Ny"/>
+      <argument type="service" id=".service_locator.44J.YjH"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -2420,6 +2440,16 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EtatRepository" class="App\Repository\EtatRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\EtatRepository" class="App\Repository\EtatRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FichefraisRepository" class="App\Repository\FichefraisRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\FichefraisRepository" class="App\Repository\FichefraisRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FraisforfaitRepository" class="App\Repository\FraisforfaitRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\FraisforfaitRepository" class="App\Repository\FraisforfaitRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LigneFraisForfaitRepository" class="App\Repository\LigneFraisForfaitRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LigneFraisForfaitRepository" class="App\Repository\LigneFraisForfaitRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\LignefraishorsforfaitRepository" class="App\Repository\LignefraishorsforfaitRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\LignefraishorsforfaitRepository" class="App\Repository\LignefraishorsforfaitRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\VisiteurRepository" class="App\Repository\VisiteurRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\VisiteurRepository" class="App\Repository\VisiteurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.CmORmuK" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -2701,9 +2731,14 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.LBf.4Ny" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.44J.YjH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\EtatRepository" type="service" id="App\Repository\EtatRepository"/>
+        <argument key="App\Repository\FichefraisRepository" type="service" id="App\Repository\FichefraisRepository"/>
+        <argument key="App\Repository\FraisforfaitRepository" type="service" id="App\Repository\FraisforfaitRepository"/>
+        <argument key="App\Repository\LigneFraisForfaitRepository" type="service" id="App\Repository\LigneFraisForfaitRepository"/>
+        <argument key="App\Repository\LignefraishorsforfaitRepository" type="service" id="App\Repository\LignefraishorsforfaitRepository"/>
         <argument key="App\Repository\VisiteurRepository" type="service" id="App\Repository\VisiteurRepository"/>
       </argument>
     </service>

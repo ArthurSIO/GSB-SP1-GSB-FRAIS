@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerWkBKHzi/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerXJZc2MI/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -27,6 +27,11 @@ $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'App\Controller\AccueilController';
 $classes[] = 'App\Controller\ComptableController';
 $classes[] = 'App\Controller\VisiteurController';
+$classes[] = 'App\Repository\EtatRepository';
+$classes[] = 'App\Repository\FichefraisRepository';
+$classes[] = 'App\Repository\FraisforfaitRepository';
+$classes[] = 'App\Repository\LigneFraisForfaitRepository';
+$classes[] = 'App\Repository\LignefraishorsforfaitRepository';
 $classes[] = 'App\Repository\VisiteurRepository';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\TemplateController';

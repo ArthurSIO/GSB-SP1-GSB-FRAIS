@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerWkBKHzi;
+namespace ContainerXJZc2MI;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -729,8 +729,18 @@ class srcApp_KernelDevDebugContainer extends Container
         $a->setQuoteStrategy(new \Doctrine\ORM\Mapping\DefaultQuoteStrategy());
         $a->setEntityListenerResolver(new \Doctrine\Bundle\DoctrineBundle\Mapping\ContainerEntityListenerResolver($this));
         $a->setRepositoryFactory(new \Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'App\\Repository\\EtatRepository' => ['privates', 'App\\Repository\\EtatRepository', 'getEtatRepositoryService', false],
+            'App\\Repository\\FichefraisRepository' => ['privates', 'App\\Repository\\FichefraisRepository', 'getFichefraisRepositoryService', false],
+            'App\\Repository\\FraisforfaitRepository' => ['privates', 'App\\Repository\\FraisforfaitRepository', 'getFraisforfaitRepositoryService', false],
+            'App\\Repository\\LigneFraisForfaitRepository' => ['privates', 'App\\Repository\\LigneFraisForfaitRepository', 'getLigneFraisForfaitRepositoryService', false],
+            'App\\Repository\\LignefraishorsforfaitRepository' => ['privates', 'App\\Repository\\LignefraishorsforfaitRepository', 'getLignefraishorsforfaitRepositoryService', false],
             'App\\Repository\\VisiteurRepository' => ['privates', 'App\\Repository\\VisiteurRepository', 'getVisiteurRepositoryService', false],
         ], [
+            'App\\Repository\\EtatRepository' => '?',
+            'App\\Repository\\FichefraisRepository' => '?',
+            'App\\Repository\\FraisforfaitRepository' => '?',
+            'App\\Repository\\LigneFraisForfaitRepository' => '?',
+            'App\\Repository\\LignefraishorsforfaitRepository' => '?',
             'App\\Repository\\VisiteurRepository' => '?',
         ])));
 
@@ -1222,6 +1232,91 @@ class srcApp_KernelDevDebugContainer extends Container
             'session' => '?',
             'twig' => '?',
         ]);
+    }
+
+    /**
+     * Gets the private 'App\Repository\EtatRepository' shared autowired service.
+     *
+     * @return \App\Repository\EtatRepository
+     */
+    protected function getEtatRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/EtatRepository.php';
+
+        return $this->privates['App\\Repository\\EtatRepository'] = new \App\Repository\EtatRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'App\Repository\FichefraisRepository' shared autowired service.
+     *
+     * @return \App\Repository\FichefraisRepository
+     */
+    protected function getFichefraisRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/FichefraisRepository.php';
+
+        return $this->privates['App\\Repository\\FichefraisRepository'] = new \App\Repository\FichefraisRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'App\Repository\FraisforfaitRepository' shared autowired service.
+     *
+     * @return \App\Repository\FraisforfaitRepository
+     */
+    protected function getFraisforfaitRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/FraisforfaitRepository.php';
+
+        return $this->privates['App\\Repository\\FraisforfaitRepository'] = new \App\Repository\FraisforfaitRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'App\Repository\LigneFraisForfaitRepository' shared autowired service.
+     *
+     * @return \App\Repository\LigneFraisForfaitRepository
+     */
+    protected function getLigneFraisForfaitRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/LigneFraisForfaitRepository.php';
+
+        return $this->privates['App\\Repository\\LigneFraisForfaitRepository'] = new \App\Repository\LigneFraisForfaitRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'App\Repository\LignefraishorsforfaitRepository' shared autowired service.
+     *
+     * @return \App\Repository\LignefraishorsforfaitRepository
+     */
+    protected function getLignefraishorsforfaitRepositoryService()
+    {
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/persistence/lib/Doctrine/Persistence/ObjectRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/collections/lib/Doctrine/Common/Collections/Selectable.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/orm/lib/Doctrine/ORM/EntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepositoryInterface.php';
+        include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
+        include_once \dirname(__DIR__, 4).'/src/Repository/LignefraishorsforfaitRepository.php';
+
+        return $this->privates['App\\Repository\\LignefraishorsforfaitRepository'] = new \App\Repository\LignefraishorsforfaitRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
     }
 
     /**

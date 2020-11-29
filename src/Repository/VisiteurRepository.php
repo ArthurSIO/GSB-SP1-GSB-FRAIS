@@ -43,9 +43,7 @@ class VisiteurRepository extends ServiceEntityRepository
                       ->setParameter('login', $login)
                       ->andWhere('v.mdp = :mdp')
                       ->setParameter('mdp', $mdp);
-        return $QueryBuilder->getQuery() -> getResult();
-        
-     
+        return $QueryBuilder->getQuery() -> getResult();  
     }
     /*
     public function findOneBySomeField($value): ?Visiteur

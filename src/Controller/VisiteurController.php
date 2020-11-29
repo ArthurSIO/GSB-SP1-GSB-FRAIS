@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Visiteur;
+use App\Entity\LigneFraisForfait;
+use App\Entity\Lignefraishorsforfait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,7 +43,9 @@ class VisiteurController extends AbstractController
                 );
             }       
         }
-        return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 0]        
+        return $this->render('visiteur/connexionVisiteur.html.twig',
+                ['formulaire' => $form->createView(),
+                    'erreur' => $erreur = 0]        
         );
     }
     
@@ -72,16 +76,25 @@ class VisiteurController extends AbstractController
             $fiches = array();
             $date = sprintf("%02d%04d",$m,$data['annee']);
             $data = $form->getData();
-            $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
-            $reponse = $bdd->query('SELECT * FROM FicheFrais');
-            while ($donnees = $reponse->fetch())
+            $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(Lignefraishorsforfait::class);
+            $vi = $repositoryObjet -> findByFicheFrais($date);
+            $tab = array();
+            
+            foreach($vi as $element)
             {
-                if($id == $donnees['idVisiteur'] AND $date == $donnees['mois'])
-                {
-                    array_push($fiches, $donnees);
-                }
+                $tab2 =  array("date" => $element->getDate()->format('Y-m-d'), "libelle" => $element->getLibelle(), "montant" => $element->getMontant());
+                array_push ($tab, $tab2);
             }
-            return $this->render('visiteur/consulterFiches.html.twig',['mois' => $data['mois'],'annee' => $data['annee'],'login' => $login, 'fiches' =>$fiches ]
+            $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(LigneFraisForfait::class);
+            $vi = $repositoryObjet -> findByLFicheFrais();
+            return $this->render('visiteur/consulterFiches.html.twig',['mois' => $data['mois'],
+                'annee' => $data['annee'],
+                'login' => $login,   
+                'tab' => $tab,
+                'taille' => count($tab)
+                ]
             
         );       
         }        

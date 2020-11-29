@@ -29,6 +29,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'idVisiteur',
                 ],
             ],
+            'repositoryClass' => [
+                3 => 'App\\Repository\\FichefraisRepository',
+            ],
         ],
     ],
     [

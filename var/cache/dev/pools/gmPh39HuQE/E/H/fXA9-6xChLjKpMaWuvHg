@@ -24,6 +24,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'mois',
                 ],
             ],
+            'repositoryClass' => [
+                2 => 'App\\Repository\\LignefraishorsforfaitRepository',
+            ],
         ],
     ],
     [
