@@ -9,16 +9,45 @@
 <div class="corp">
     {{mois}}
     {{annee}}
+    <h1>Fiches de frais forfait</h1>
     <table>
         <tr>
-            <td>Etat</td>
             <td></td>
-            <td></td>
-            <td></td>
+            <td>Quantite</td>
+            <td>Libelle</td>
+            <td>Montant</td>
         </tr>
-    {{for uneFiche in fiches}}
-    {{fiches[0]['idVisiteur']}}
-    {{endfor}}
+        {% if taille1 > 1%}
+        {% for i in 0..taille1 - 1  %}
+        <tr>
+            <td>{{i + 1}}</td>
+            <td>{{tab1[i]["quantite"]}}</td>
+            <td>{{tab1[i]["libelle"]}}</td>
+            <td>{{tab1[i]["montant"]}}</td>
+        </tr>
+        {% endfor %}
+        {%endif%}
+    </table>
+    <h1>Fiches de frais hors forfait</h1>
+    <table>
+        <tr>
+            <td></td>
+            <td>date</td>
+            <td>Montant</td>
+            <td>Libelle</td>
+        </tr>
+        
+
+        {% if taille > 1%}
+        {% for i in 0..taille - 1  %}
+        <tr>
+            <td>{{i + 1}}</td>
+            <td>{{tab[i]["date"]}}</td>
+            <td>{{tab[i]["montant"]}}</td>
+            <td>{{tab[i]["libelle"]}}</td>
+        </tr>
+        {% endfor %}
+        {%endif%}
     </table>
 </div>
 

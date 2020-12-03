@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<nav>
+  <ul class="menu">
+    <li>{{login}}</li>
+  </ul>
+  <ul class="form">
+    <li><a href="{{path( 'donnerDate')}}">Consulter Frais</a></li>
+    <li class="pageV">Menu</li>
+    <li><a href="{{path( 'accueil')}}">Déconnexion</a></li>   
+  </ul>
+</nav>
+{% endblock %}

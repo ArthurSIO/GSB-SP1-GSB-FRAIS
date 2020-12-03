@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Visiteur;
+use App\Entity\LigneFraisForfait;
+use App\Entity\Lignefraishorsforfait;
+use App\Entity\Fraisforfait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -25,32 +29,24 @@ class VisiteurController extends AbstractController
         $form->handleRequest( $request );
         if($form->isSubmitted() && $form->isValid()){
             $data = $form->getData();
-            $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
-            $reponse = $bdd->query('SELECT id,login,mdp FROM Visiteur');
-            $test = 0;
-            while ($donnees = $reponse->fetch())
-            {
-                if($data['nom_utilisateur'] == $donnees['login'] AND $data['mdp_utilisateur'] == $donnees['mdp'])
-                {    
-                    $test = 1;
-                    $session = $request -> getSession();
-                    $session -> set('login',$data['nom_utilisateur']);
-                    $session -> set('id',$donnees['id']);
-                    $id = $donnees['id'];
+            $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(Visiteur::class);
+            $vi = $repositoryObjet -> findByLoginAndMdp($data['nom_utilisateur'], $data['mdp_utilisateur']);
+            if ($vi === NULL){
+                return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 1]        
+                );
             }
-        }         
-        if($test == 1 ){
-            return $this->render('visiteur/menuVisiteur.html.twig',['login' => $login = $data['nom_utilisateur'], 'id' => $id ]
-            
-        );
+            else{
+                $session = $request -> getSession();
+                $session -> set('login',$data['nom_utilisateur']);
+                $session -> set('id',$vi[0]->getId());
+                return $this->render('visiteur/menuVisiteur.html.twig',['login' => $login = $data['nom_utilisateur']]
+                );
+            }       
         }
-        else{
-            return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 1]        
-        );
-        }
-        
-        }
-        return $this->render('visiteur/connexionVisiteur.html.twig',['formulaire' => $form->createView(),'erreur' => $erreur = 0]        
+        return $this->render('visiteur/connexionVisiteur.html.twig',
+                ['formulaire' => $form->createView(),
+                    'erreur' => $erreur = 0]        
         );
     }
     
@@ -81,16 +77,34 @@ class VisiteurController extends AbstractController
             $fiches = array();
             $date = sprintf("%02d%04d",$m,$data['annee']);
             $data = $form->getData();
-            $bdd = new \PDO('mysql:host=localhost;dbname=GSBFrais;charset=utf8', 'developpeur', 'azerty');
-            $reponse = $bdd->query('SELECT * FROM FicheFrais');
-            while ($donnees = $reponse->fetch())
+            //récupération LigneFraisHorsForfait
+            $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(Lignefraishorsforfait::class);
+            $vi = $repositoryObjet -> findByFicheFrais($date);
+            $tab = array();      
+            foreach($vi as $element)
             {
-                if($id == $donnees['idVisiteur'] AND $date == $donnees['mois'])
-                {
-                    array_push($fiches, $donnees);
-                }
+                $tab2 =  array("date" => $element->getDate()->format('Y-m-d'), "libelle" => $element->getLibelle(), "montant" => $element->getMontant());
+                array_push ($tab, $tab2);
             }
-            return $this->render('visiteur/consulterFiches.html.twig',['mois' => $data['mois'],'annee' => $data['annee'],'login' => $login, 'fiches' =>$fiches ]
+            //récupération LigneFraisForfait
+            $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(LigneFraisForfait::class);
+            $vi = $repositoryObjet -> findByLFicheFrais($date);
+            $tab1 = array(); 
+            /*foreach($vi as $element)
+            {
+                $tab3 =  array("quantite" => $element->getQuantite(), "libelle" => $element->getLibelle(), "montant" => $element->getMontant());
+                array_push ($tab, $tab2);
+            }*/
+            return $this->render('visiteur/consulterFiches.html.twig',['mois' => $data['mois'],
+                'annee' => $data['annee'],
+                'login' => $login,   
+                'tab' => $tab,
+                'taille' => count($tab),
+                'tab1' => $tab1,
+                'taille1' => count($tab1)
+                ]
             
         );       
         }        
