@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Visiteur;
 use App\Entity\LigneFraisForfait;
 use App\Entity\Lignefraishorsforfait;
+use App\Entity\Fraisforfait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -76,24 +77,33 @@ class VisiteurController extends AbstractController
             $fiches = array();
             $date = sprintf("%02d%04d",$m,$data['annee']);
             $data = $form->getData();
+            //récupération LigneFraisHorsForfait
             $doctrine = $this -> getDoctrine();
             $repositoryObjet = $doctrine -> getRepository(Lignefraishorsforfait::class);
             $vi = $repositoryObjet -> findByFicheFrais($date);
-            $tab = array();
-            
+            $tab = array();      
             foreach($vi as $element)
             {
                 $tab2 =  array("date" => $element->getDate()->format('Y-m-d'), "libelle" => $element->getLibelle(), "montant" => $element->getMontant());
                 array_push ($tab, $tab2);
             }
+            //récupération LigneFraisForfait
             $doctrine = $this -> getDoctrine();
             $repositoryObjet = $doctrine -> getRepository(LigneFraisForfait::class);
-            $vi = $repositoryObjet -> findByLFicheFrais();
+            $vi = $repositoryObjet -> findByLFicheFrais($date);
+            $tab1 = array(); 
+            /*foreach($vi as $element)
+            {
+                $tab3 =  array("quantite" => $element->getQuantite(), "libelle" => $element->getLibelle(), "montant" => $element->getMontant());
+                array_push ($tab, $tab2);
+            }*/
             return $this->render('visiteur/consulterFiches.html.twig',['mois' => $data['mois'],
                 'annee' => $data['annee'],
                 'login' => $login,   
                 'tab' => $tab,
-                'taille' => count($tab)
+                'taille' => count($tab),
+                'tab1' => $tab1,
+                'taille1' => count($tab1)
                 ]
             
         );       
