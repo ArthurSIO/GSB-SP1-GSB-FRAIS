@@ -216,6 +216,12 @@
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\VisiteurController"/>
       </call>
     </service>
+    <service id="App\Fonction\ComptableFunction" class="App\Fonction\ComptableFunction" autowire="true" autoconfigure="true"/>
+    <service id="App\Fonction\VisiteurFunction" class="App\Fonction\VisiteurFunction" autowire="true" autoconfigure="true"/>
+    <service id="App\Repository\ComptableRepository" class="App\Repository\ComptableRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\EtatRepository" class="App\Repository\EtatRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -2083,7 +2089,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.44J.YjH"/>
+      <argument type="service" id=".service_locator.oXed2m3"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -2440,6 +2446,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\VisiteurController" class="App\Controller\VisiteurController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ComptableRepository" class="App\Repository\ComptableRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ComptableRepository" class="App\Repository\ComptableRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EtatRepository" class="App\Repository\EtatRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\EtatRepository" class="App\Repository\EtatRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\FichefraisRepository" class="App\Repository\FichefraisRepository" autowire="true" abstract="true"/>
@@ -2731,9 +2739,10 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.44J.YjH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.oXed2m3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\ComptableRepository" type="service" id="App\Repository\ComptableRepository"/>
         <argument key="App\Repository\EtatRepository" type="service" id="App\Repository\EtatRepository"/>
         <argument key="App\Repository\FichefraisRepository" type="service" id="App\Repository\FichefraisRepository"/>
         <argument key="App\Repository\FraisforfaitRepository" type="service" id="App\Repository\FraisforfaitRepository"/>

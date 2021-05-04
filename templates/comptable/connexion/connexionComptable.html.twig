@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Connexion Comptable
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+{% endblock %}
+
+{% block body %}
+<div class="login-container">
+        
+        
+        <div class="div1"><img src="/images/gsb1.png" class="img2"/></div>
+
+        {% if erreur is defined %}
+            {% if erreur == 1 %}
+                <p>Attention ! Login ou mot de passe incorrect.</p>
+            {% endif %}
+        {% endif %} 
+        
+        {{form_start(formulaire)}}
+            
+            <label class="input-icon" for="username"><img src="/images/icone.png" class="img1" /></label>
+            {{form_widget(formulaire.nom_utilisateur)}}
+            
+            <label class="input-icon" for="password"><img src="/images/lock.png" class="img1" /></label>
+            {{form_widget(formulaire.mdp_utilisateur)}}   
+
+            <input type="submit"  value="Retour" onclick="history.go(-1)"/>
+            
+            <input type="submit" for="valider" value="Log In" />
+            
+
+        {{form_end(formulaire)}}
+    </div>
+{% endblock %}

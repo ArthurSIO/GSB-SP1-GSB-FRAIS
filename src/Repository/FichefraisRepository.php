@@ -35,13 +35,24 @@ class FichefraisRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function findByFicheFrais()
+    
+     public function findFiche($mois)
     {
-        return $this -> createQueryBuilder('f')
-                     -> Join( 'f.Lignefraishorsforfait','l' )
-                     -> addSelect('l')
-                     ->getQuery()
-                     -> getResult();
+        $QueryBuilder = $this -> createQueryBuilder('ff');
+    
+        $QueryBuilder -> where('ff.mois = :mois')
+                      ->setParameter('mois', $mois);
+        return $QueryBuilder->getQuery() -> getResult();  
+    }
+    public function findFicheVis($mois,$idVisiteur)
+    {
+        $QueryBuilder = $this -> createQueryBuilder('ff');
+    
+        $QueryBuilder ->where('ff.mois = :mois')
+                      ->setParameter('mois', $mois)
+                      ->andWhere('ff.idvisiteur = :idvisiteur')
+                      ->setParameter('idvisiteur', $idVisiteur);
+        return $QueryBuilder->getQuery() -> getResult();  
     }
 
     /*

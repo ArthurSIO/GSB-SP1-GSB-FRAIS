@@ -107,13 +107,43 @@ class __TwigTemplate_0be564cfcd4b16f3d58644c2875d9c5b8ed48faf59cd673aa4f1ec672e1
             <td>Libelle</td>
             <td>Montant</td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+        ";
+        // line 20
+        if ((1 === twig_compare((isset($context["taille1"]) || array_key_exists("taille1", $context) ? $context["taille1"] : (function () { throw new RuntimeError('Variable "taille1" does not exist.', 20, $this->source); })()), 1))) {
+            // line 21
+            echo "        ";
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(range(0, ((isset($context["taille1"]) || array_key_exists("taille1", $context) ? $context["taille1"] : (function () { throw new RuntimeError('Variable "taille1" does not exist.', 21, $this->source); })()) - 1)));
+            foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+                // line 22
+                echo "        <tr>
+            <td>";
+                // line 23
+                echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
+                echo "</td>
+            <td>";
+                // line 24
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab1"]) || array_key_exists("tab1", $context) ? $context["tab1"] : (function () { throw new RuntimeError('Variable "tab1" does not exist.', 24, $this->source); })()), $context["i"], [], "array", false, false, false, 24), "quantite", [], "array", false, false, false, 24), "html", null, true);
+                echo "</td>
+            <td>";
+                // line 25
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab1"]) || array_key_exists("tab1", $context) ? $context["tab1"] : (function () { throw new RuntimeError('Variable "tab1" does not exist.', 25, $this->source); })()), $context["i"], [], "array", false, false, false, 25), "libelle", [], "array", false, false, false, 25), "html", null, true);
+                echo "</td>
+            <td>";
+                // line 26
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab1"]) || array_key_exists("tab1", $context) ? $context["tab1"] : (function () { throw new RuntimeError('Variable "tab1" does not exist.', 26, $this->source); })()), $context["i"], [], "array", false, false, false, 26), "montant", [], "array", false, false, false, 26), "html", null, true);
+                echo "</td>
         </tr>
-    </table>
+        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 29
+            echo "        ";
+        }
+        // line 30
+        echo "    </table>
     <h1>Fiches de frais hors forfait</h1>
     <table>
         <tr>
@@ -125,30 +155,30 @@ class __TwigTemplate_0be564cfcd4b16f3d58644c2875d9c5b8ed48faf59cd673aa4f1ec672e1
         
 
         ";
-        // line 37
-        if ((1 === twig_compare((isset($context["taille"]) || array_key_exists("taille", $context) ? $context["taille"] : (function () { throw new RuntimeError('Variable "taille" does not exist.', 37, $this->source); })()), 1))) {
-            // line 38
+        // line 41
+        if ((1 === twig_compare((isset($context["taille"]) || array_key_exists("taille", $context) ? $context["taille"] : (function () { throw new RuntimeError('Variable "taille" does not exist.', 41, $this->source); })()), 1))) {
+            // line 42
             echo "        ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(range(0, ((isset($context["taille"]) || array_key_exists("taille", $context) ? $context["taille"] : (function () { throw new RuntimeError('Variable "taille" does not exist.', 38, $this->source); })()) - 1)));
+            $context['_seq'] = twig_ensure_traversable(range(0, ((isset($context["taille"]) || array_key_exists("taille", $context) ? $context["taille"] : (function () { throw new RuntimeError('Variable "taille" does not exist.', 42, $this->source); })()) - 1)));
             foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-                // line 39
+                // line 43
                 echo "        <tr>
             <td>";
-                // line 40
+                // line 44
                 echo twig_escape_filter($this->env, ($context["i"] + 1), "html", null, true);
                 echo "</td>
             <td>";
-                // line 41
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab"]) || array_key_exists("tab", $context) ? $context["tab"] : (function () { throw new RuntimeError('Variable "tab" does not exist.', 41, $this->source); })()), $context["i"], [], "array", false, false, false, 41), "date", [], "array", false, false, false, 41), "html", null, true);
+                // line 45
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab"]) || array_key_exists("tab", $context) ? $context["tab"] : (function () { throw new RuntimeError('Variable "tab" does not exist.', 45, $this->source); })()), $context["i"], [], "array", false, false, false, 45), "date", [], "array", false, false, false, 45), "html", null, true);
                 echo "</td>
             <td>";
-                // line 42
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab"]) || array_key_exists("tab", $context) ? $context["tab"] : (function () { throw new RuntimeError('Variable "tab" does not exist.', 42, $this->source); })()), $context["i"], [], "array", false, false, false, 42), "montant", [], "array", false, false, false, 42), "html", null, true);
+                // line 46
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab"]) || array_key_exists("tab", $context) ? $context["tab"] : (function () { throw new RuntimeError('Variable "tab" does not exist.', 46, $this->source); })()), $context["i"], [], "array", false, false, false, 46), "montant", [], "array", false, false, false, 46), "html", null, true);
                 echo "</td>
             <td>";
-                // line 43
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab"]) || array_key_exists("tab", $context) ? $context["tab"] : (function () { throw new RuntimeError('Variable "tab" does not exist.', 43, $this->source); })()), $context["i"], [], "array", false, false, false, 43), "libelle", [], "array", false, false, false, 43), "html", null, true);
+                // line 47
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["tab"]) || array_key_exists("tab", $context) ? $context["tab"] : (function () { throw new RuntimeError('Variable "tab" does not exist.', 47, $this->source); })()), $context["i"], [], "array", false, false, false, 47), "libelle", [], "array", false, false, false, 47), "html", null, true);
                 echo "</td>
         </tr>
         ";
@@ -156,10 +186,10 @@ class __TwigTemplate_0be564cfcd4b16f3d58644c2875d9c5b8ed48faf59cd673aa4f1ec672e1
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 46
+            // line 50
             echo "        ";
         }
-        // line 47
+        // line 51
         echo "    </table>
 </div>
 
@@ -183,7 +213,7 @@ class __TwigTemplate_0be564cfcd4b16f3d58644c2875d9c5b8ed48faf59cd673aa4f1ec672e1
 
     public function getDebugInfo()
     {
-        return array (  163 => 47,  160 => 46,  151 => 43,  147 => 42,  143 => 41,  139 => 40,  136 => 39,  131 => 38,  129 => 37,  100 => 11,  96 => 10,  93 => 9,  91 => 8,  84 => 7,  74 => 5,  67 => 4,  54 => 3,  37 => 1,);
+        return array (  193 => 51,  190 => 50,  181 => 47,  177 => 46,  173 => 45,  169 => 44,  166 => 43,  161 => 42,  159 => 41,  146 => 30,  143 => 29,  134 => 26,  130 => 25,  126 => 24,  122 => 23,  119 => 22,  114 => 21,  112 => 20,  100 => 11,  96 => 10,  93 => 9,  91 => 8,  84 => 7,  74 => 5,  67 => 4,  54 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -207,12 +237,16 @@ class __TwigTemplate_0be564cfcd4b16f3d58644c2875d9c5b8ed48faf59cd673aa4f1ec672e1
             <td>Libelle</td>
             <td>Montant</td>
         </tr>
+        {% if taille1 > 1%}
+        {% for i in 0..taille1 - 1  %}
         <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+            <td>{{i + 1}}</td>
+            <td>{{tab1[i][\"quantite\"]}}</td>
+            <td>{{tab1[i][\"libelle\"]}}</td>
+            <td>{{tab1[i][\"montant\"]}}</td>
         </tr>
+        {% endfor %}
+        {%endif%}
     </table>
     <h1>Fiches de frais hors forfait</h1>
     <table>

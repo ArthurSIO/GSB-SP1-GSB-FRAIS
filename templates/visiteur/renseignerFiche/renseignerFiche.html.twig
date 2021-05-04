@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Renseigner Fiche{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+{% endblock %}
+{% block body %}
+{%include 'visiteur/enteteVisiteur.html.twig'%}
+<div class="corp">
+    renseigne fiche 
+    <h1>{{msg}}</h1>
+    <h1>Fiches de frais forfait</h1>
+    <table class="container">
+        <thead>
+            <tr>
+                <th><h1></h1></th>
+                <th><h1>Quantite</h1></th>
+                <th><h1>Libelle</h1></th>
+                <th><h1>Montant</h1></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if taille1 > 1%}
+                {% for i in 0..taille1 - 1  %}
+                    <tr>
+                        <td>{{i + 1}}</td>
+                        <td>{{tab1[i]["quantite"]}}</td>
+                        <td>{{tab1[i]["libelle"]}}</td>
+                        <td>{{tab1[i]["montant"]}}</td>
+                    </tr>
+                {% endfor %}
+            {%endif%}
+            
+        </tbody>
+    </table>
+    <h1>Fiches de frais hors forfait</h1>
+    <table class="container">
+        <thead>
+            <tr>
+                <th><h1></h1></th>
+                <th><h1>date</h1></th>
+                <th><h1>Montant</h1></th>
+                <th><h1>Libelle</h1></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if taille > 1%}
+                {% for i in 0..taille - 1  %}
+                <tr>
+                    <td>{{i + 1}}</td>
+                    <td>{{tab[i]["date"]}}</td>
+                    <td>{{tab[i]["montant"]}}</td>
+                    <td>{{tab[i]["libelle"]}}</td>
+                </tr>
+                {% endfor %}
+            {%endif%}
+        </tbody>
+    </table>
+    <a href="{{path( 'creerHF')}}"><img src="/images/btnAdd.png" class="btnAdd"/></a>
+</div>
+
+
+
+{% endblock %}

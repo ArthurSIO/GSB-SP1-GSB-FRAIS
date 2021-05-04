@@ -47,6 +47,20 @@ class LigneFraisForfaitRepository extends ServiceEntityRepository
                      ->getQuery()
                      -> getResult();
     }
+    public function findByLFicheFraisVis($mois,$idVisiteur)
+    {
+        return $this -> createQueryBuilder('l')
+                     -> Join( 'l.idFraisForfait','f' )
+                     -> addSelect('f')
+                     -> Join( 'l.idvisiteur','ff' )
+                     -> addSelect('ff')
+                     -> where('ff.mois = :mois')
+                     ->setParameter('mois', $mois)
+                     ->andWhere('ff.idvisiteur = :idvisiteur')
+                     ->setParameter('idvisiteur', $idVisiteur)
+                     ->getQuery()
+                     -> getResult();
+    }
     /*
     public function findOneBySomeField($value): ?Lignefraisforfait
     {

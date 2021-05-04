@@ -194,6 +194,17 @@ class Fichefrais extends \App\Entity\Fichefrais implements \Doctrine\ORM\Proxy\P
     /**
      * {@inheritDoc}
      */
+    public function setMois(?string $mois): \App\Entity\Fichefrais
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMois', [$mois]);
+
+        return parent::setMois($mois);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getNbjustificatifs(): ?int
     {
 

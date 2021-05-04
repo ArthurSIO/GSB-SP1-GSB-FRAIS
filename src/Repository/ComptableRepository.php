@@ -19,32 +19,14 @@ class ComptableRepository extends ServiceEntityRepository
         parent::__construct($registry, Comptable::class);
     }
 
-    // /**
-    //  * @return Comptable[] Returns an array of Comptable objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByLoginAndMdp($login, $mdp)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $QueryBuilder = $this -> createQueryBuilder('c');
+    
+        $QueryBuilder -> where('c.login = :login')
+                      ->setParameter('login', $login)
+                      ->andWhere('c.mdp = :mdp')
+                      ->setParameter('mdp', $mdp);
+        return $QueryBuilder->getQuery() -> getResult();  
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Comptable
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

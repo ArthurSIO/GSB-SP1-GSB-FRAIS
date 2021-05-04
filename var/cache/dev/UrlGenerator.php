@@ -6,8 +6,10 @@ return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format'], ['variable', '/', '\\d+', 'code'], ['text', '/_error']], [], []],
     'accueil' => [[], ['_controller' => 'App\\Controller\\AccueilController::index'], [], [['text', '/']], [], []],
     'visiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::index'], [], [['text', '/visiteur']], [], []],
-    'menuVisiteur' => [[], ['_controller' => 'App\\Controller\\VisiteurController::menu'], [], [['text', '/visiteur/menu']], [], []],
     'donnerDate' => [[], ['_controller' => 'App\\Controller\\VisiteurController::donnerDate'], [], [['text', '/visiteur/menu/donnerDate']], [], []],
     'renseigner' => [[], ['_controller' => 'App\\Controller\\VisiteurController::renseigner'], [], [['text', '/visiteur/menu/renseigner']], [], []],
+    'creerHF' => [[], ['_controller' => 'App\\Controller\\VisiteurController::creerHF'], [], [['text', '/visiteur/menu/creerHF']], [], []],
     'comptable' => [[], ['_controller' => 'App\\Controller\\ComptableController::index'], [], [['text', '/comptable']], [], []],
+    'choisirVisMois' => [[], ['_controller' => 'App\\Controller\\ComptableController::choisirVisMois'], [], [['text', '/comptable/choixVisMois']], [], []],
+    'actualiseFrais' => [['idFraisForfait'], ['_controller' => 'App\\Controller\\ComptableController::actualiseFrais'], [], [['variable', '/', '[^/]++', 'idFraisForfait'], ['text', '/comptable/actualiseFrais']], [], []],
 ];

@@ -56,25 +56,30 @@ class __TwigTemplate_e322a8ff90da5c9bbc35c70159114cae4b91f5ffb954db1720115acd012
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "<nav>
-  <ul class=\"menu\">
-    <li>";
-        // line 6
-        echo twig_escape_filter($this->env, (isset($context["login"]) || array_key_exists("login", $context) ? $context["login"] : (function () { throw new RuntimeError('Variable "login" does not exist.', 6, $this->source); })()), "html", null, true);
-        echo "</li>
-  </ul>
-  <ul class=\"form\">
-    <li><a href=\"";
-        // line 9
+        echo "
+
+<ul>
+  <li><img src=\"/images/gsb1.png\" class=\"img3\"/></li>
+  <li><a href=\"";
+        // line 8
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("donnerDate");
         echo "\">Consulter Frais</a></li>
-    <li class=\"pageV\">Menu</li>
-    <li><a href=\"";
+  <li><a href=\"";
+        // line 9
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("renseigner");
+        echo "\">Renseigner Frais</a></li>
+  <li><a href=\"#\">Menu</a></li>
+  <li style=\"float:right\"><a href=\"";
         // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("accueil");
-        echo "\">Déconnexion</a></li>   
-  </ul>
-</nav>
+        echo "\">Déconnexion</a></li> 
+  <li style=\"float:right\"><a >";
+        // line 12
+        echo twig_escape_filter($this->env, (isset($context["login"]) || array_key_exists("login", $context) ? $context["login"] : (function () { throw new RuntimeError('Variable "login" does not exist.', 12, $this->source); })()), "html", null, true);
+        echo "</a></li>
+</ul>
+
+
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -93,7 +98,7 @@ class __TwigTemplate_e322a8ff90da5c9bbc35c70159114cae4b91f5ffb954db1720115acd012
 
     public function getDebugInfo()
     {
-        return array (  74 => 11,  69 => 9,  63 => 6,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  78 => 12,  74 => 11,  69 => 9,  65 => 8,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -101,16 +106,18 @@ class __TwigTemplate_e322a8ff90da5c9bbc35c70159114cae4b91f5ffb954db1720115acd012
         return new Source("{% extends 'base.html.twig' %}
 
 {% block body %}
-<nav>
-  <ul class=\"menu\">
-    <li>{{login}}</li>
-  </ul>
-  <ul class=\"form\">
-    <li><a href=\"{{path( 'donnerDate')}}\">Consulter Frais</a></li>
-    <li class=\"pageV\">Menu</li>
-    <li><a href=\"{{path( 'accueil')}}\">Déconnexion</a></li>   
-  </ul>
-</nav>
+
+
+<ul>
+  <li><img src=\"/images/gsb1.png\" class=\"img3\"/></li>
+  <li><a href=\"{{path( 'donnerDate')}}\">Consulter Frais</a></li>
+  <li><a href=\"{{path( 'renseigner')}}\">Renseigner Frais</a></li>
+  <li><a href=\"#\">Menu</a></li>
+  <li style=\"float:right\"><a href=\"{{path( 'accueil')}}\">Déconnexion</a></li> 
+  <li style=\"float:right\"><a >{{login}}</a></li>
+</ul>
+
+
 {% endblock %}", "visiteur/enteteVisiteur.html.twig", "/var/www/html/GSB-FRAISv2/templates/visiteur/enteteVisiteur.html.twig");
     }
 }

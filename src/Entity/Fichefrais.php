@@ -85,6 +85,13 @@ class Fichefrais
     {
         return $this->mois;
     }
+    // Fichefrais
+    public function setMois(?string $mois): self
+    {
+        $this->mois = $mois;
+
+        return $this;
+    }
 
     public function getNbjustificatifs(): ?int
     {
@@ -114,7 +121,7 @@ class Fichefrais
     {
         return $this->datemodif;
     }
-
+    //
     public function setDatemodif(?\DateTimeInterface $datemodif): self
     {
         $this->datemodif = $datemodif;
@@ -126,7 +133,7 @@ class Fichefrais
     {
         return $this->idetat;
     }
-
+    // Etat
     public function setIdetat(?Etat $idetat): self
     {
         $this->idetat = $idetat;
@@ -138,7 +145,7 @@ class Fichefrais
     {
         return $this->idvisiteur;
     }
-
+    //Visiteur
     public function setIdvisiteur(?Visiteur $idvisiteur): self
     {
         $this->idvisiteur = $idvisiteur;

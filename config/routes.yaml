@@ -6,16 +6,23 @@ accueil:
 visiteur:
     path: /visiteur
     controller: App\Controller\VisiteurController::index
-menuVisiteur:
-    path: /visiteur/menu
-    controller: App\Controller\VisiteurController::menu
 donnerDate:
     path: /visiteur/menu/donnerDate
     controller: App\Controller\VisiteurController::donnerDate
 renseigner:
     path: /visiteur/menu/renseigner
     controller: App\Controller\VisiteurController::renseigner
+creerHF:
+    path: /visiteur/menu/creerHF
+    controller: App\Controller\VisiteurController::creerHF
+
 #controller comptable
 comptable:
     path: /comptable
     controller: App\Controller\ComptableController::index
+choisirVisMois:
+    path: /comptable/choixVisMois
+    controller: App\Controller\ComptableController::choisirVisMois
+actualiseFrais:
+    path: /comptable/actualiseFrais/{idFraisForfait}
+    controller: App\Controller\ComptableController::actualiseFrais

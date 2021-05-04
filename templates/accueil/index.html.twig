@@ -9,24 +9,24 @@
 {% endblock %}
 
 {% block body %}
-<div class="wrapper">
-    <section class="login-container">
-        <div>		
-            <header>
-                <h2>Acceuil</h2>
-            </header>
-            <a href="{{path( 'visiteur')}}" >
-		<div class="link">				
-                    Visiteur				
-		</div>
-            </a>
-            <a href="{{path( 'comptable')}}">
-            <div class="link">
-            Comptable
-            </div>
-            </a>
-        </div>
-    </section>
+    <div ><h1 class="acceuil"><center>Laboratoire Galaxy Swiss Bourdin</center></h1></div>
 
-</div>
+    <div class="btn-visiteur">
+        <a class="couleur-b-contour" href="{{path( 'visiteur')}}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="link">Visiteur</div>
+        </a>
+    </div>
+    <div class="btn-comptable">
+        <a class="couleur-b-contour" href="{{path( 'comptable')}}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="link">Comptable</div> 
+        </a>
+    </div>
 {% endblock %}

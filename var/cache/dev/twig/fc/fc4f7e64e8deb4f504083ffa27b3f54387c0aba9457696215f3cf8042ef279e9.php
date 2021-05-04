@@ -90,32 +90,32 @@ class __TwigTemplate_5d1b045cd8cbe4fef617c4285e72fbd4a7a2ea5a305e06c728d699a8c18
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 12
-        echo "<div class=\"wrapper\">
-    <section class=\"login-container\">
-        <div>\t\t
-            <header>
-                <h2>Acceuil</h2>
-            </header>
-            <a href=\"";
-        // line 18
+        echo "    <div ><h1 class=\"acceuil\"><center>Laboratoire Galaxy Swiss Bourdin</center></h1></div>
+
+    <div class=\"btn-visiteur\">
+        <a class=\"couleur-b-contour\" href=\"";
+        // line 15
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("visiteur");
-        echo "\" >
-\t\t<div class=\"link\">\t\t\t\t
-                    Visiteur\t\t\t\t
-\t\t</div>
-            </a>
-            <a href=\"";
-        // line 23
+        echo "\">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class=\"link\">Visiteur</div>
+        </a>
+    </div>
+    <div class=\"btn-comptable\">
+        <a class=\"couleur-b-contour\" href=\"";
+        // line 24
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comptable");
         echo "\">
-            <div class=\"link\">
-            Comptable
-            </div>
-            </a>
-        </div>
-    </section>
-
-</div>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class=\"link\">Comptable</div> 
+        </a>
+    </div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -134,7 +134,7 @@ class __TwigTemplate_5d1b045cd8cbe4fef617c4285e72fbd4a7a2ea5a305e06c728d699a8c18
 
     public function getDebugInfo()
     {
-        return array (  109 => 23,  101 => 18,  93 => 12,  86 => 11,  76 => 8,  69 => 7,  61 => 4,  54 => 3,  37 => 1,);
+        return array (  110 => 24,  98 => 15,  93 => 12,  86 => 11,  76 => 8,  69 => 7,  61 => 4,  54 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -150,26 +150,26 @@ class __TwigTemplate_5d1b045cd8cbe4fef617c4285e72fbd4a7a2ea5a305e06c728d699a8c18
 {% endblock %}
 
 {% block body %}
-<div class=\"wrapper\">
-    <section class=\"login-container\">
-        <div>\t\t
-            <header>
-                <h2>Acceuil</h2>
-            </header>
-            <a href=\"{{path( 'visiteur')}}\" >
-\t\t<div class=\"link\">\t\t\t\t
-                    Visiteur\t\t\t\t
-\t\t</div>
-            </a>
-            <a href=\"{{path( 'comptable')}}\">
-            <div class=\"link\">
-            Comptable
-            </div>
-            </a>
-        </div>
-    </section>
+    <div ><h1 class=\"acceuil\"><center>Laboratoire Galaxy Swiss Bourdin</center></h1></div>
 
-</div>
+    <div class=\"btn-visiteur\">
+        <a class=\"couleur-b-contour\" href=\"{{path( 'visiteur')}}\">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class=\"link\">Visiteur</div>
+        </a>
+    </div>
+    <div class=\"btn-comptable\">
+        <a class=\"couleur-b-contour\" href=\"{{path( 'comptable')}}\">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class=\"link\">Comptable</div> 
+        </a>
+    </div>
 {% endblock %}
 ", "accueil/index.html.twig", "/var/www/html/GSB-FRAISv2/templates/accueil/index.html.twig");
     }

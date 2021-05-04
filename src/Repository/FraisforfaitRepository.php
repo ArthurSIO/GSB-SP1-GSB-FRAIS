@@ -35,7 +35,17 @@ class FraisforfaitRepository extends ServiceEntityRepository
         ;
     }
     */
+    
 
+    /*public function findId($value) 
+    {
+        return $this->createQueryBuilder('ff')
+            ->andWhere('ff.idVisiteur = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }*/
     /*
     public function findOneBySomeField($value): ?Fraisforfait
     {

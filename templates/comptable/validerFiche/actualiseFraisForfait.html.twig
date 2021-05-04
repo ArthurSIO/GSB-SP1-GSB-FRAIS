@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu Visiteur{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+{% endblock %}
+
+{% block body %}
+
+{%include 'comptable/enteteComptable.html.twig'%}
+<div class="corp">
+    <!-- zadazd -->
+	<h1>Saisir les modifications pour le Frais {{id}}</h1>
+    {{form_start(formulaire)}}
+    {{form_widget(formulaire.libelle)}}
+    {{ form_widget(formulaire.montant)}}
+    {{ form_widget(formulaire.quantite)}}
+    {{form_end(formulaire)}}
+</div>
+
+{% endblock %}

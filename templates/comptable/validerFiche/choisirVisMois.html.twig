@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu Visiteur{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+{% endblock %}
+
+{% block body %}
+
+{%include 'comptable/enteteComptable.html.twig'%}
+<div class="corp">
+    <h1>Sélectionner le visiteur et le mois : </h1>
+    <h1>{{msg}}</h1>
+	{{form_start(formulaire)}}
+        <select type="Select" id="{{ form_widget(formulaire.visiteur)}}">
+            {% for i in 0..taille - 1  %}
+                <option>{{tab[i]}}</option>
+            {% endfor %}
+        </select>
+        <select type="Select" id="{{ form_widget(formulaire.mois)}}">
+		{% for i in 0..11 %} 
+            <option {% if dateC == i + 1 %} selected {%endif%}>{{ moisA[i] }}</option>
+		{% endfor %}
+        </select>
+    {{form_end(formulaire)}}
+</div>
+
+{% endblock %}

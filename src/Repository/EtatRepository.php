@@ -22,19 +22,13 @@ class EtatRepository extends ServiceEntityRepository
     // /**
     //  * @return Etat[] Returns an array of Etat objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    public function getCl($id){
+        $conn = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT id FROM Etat e WHERE e.id = :id';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['id' => $id]); 
+        return $stmt->fetchAllAssociative();  
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Etat

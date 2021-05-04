@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création Hors Forfait{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+{% endblock %}
+{% block body %}
+{%include 'visiteur/enteteVisiteur.html.twig'%}
+<div class="corp">
+    <h1>Creer Hors Forfait </h1>
+        <div class="form-creeHF">
+            {{form_start(formulaire)}}
+            <div class="group">      
+                {{form_widget(formulaire.libelle)}} 
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="creeHF">Libelle</label>
+            </div>
+            <div class="group">      
+                {{form_widget(formulaire.date)}}
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="creeHF">Date</label>
+            </div>
+            <div class="group">      
+                {{form_widget(formulaire.montant)}}  
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label class="creeHF">Montant</label>
+            </div>
+            <div class="wrap">
+                {{form_widget(formulaire.valider)}}  
+            </div>
+            {{form_end(formulaire)}}
+        </div>
+</div>
+
+
+{% endblock %}
