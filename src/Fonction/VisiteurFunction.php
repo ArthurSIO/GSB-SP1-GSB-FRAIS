@@ -84,10 +84,10 @@
         public function creerHorsForfait($entityManager,$doctrine,$date,$libelle,$montant,$login,$dateMA){
             $repositoryObjet = $doctrine -> getRepository(Visiteur::class);
             $leVis = $repositoryObjet->findByLogin($login);
-            dump($leVis);
+            //dump($leVis);
             $repositoryObjet = $doctrine -> getRepository(Fichefrais::class);
             $ff = $repositoryObjet->findFicheVis($date,"abc");
-            dump($entityManager);
+            //dump($entityManager);
             $date = new DateTime($date);
             $horsF = new Lignefraishorsforfait();
             $horsF->setLibelle($libelle);
@@ -125,7 +125,7 @@
             }
             return false;
         }
-        function moisJour($jour, $mois){
+        function getFiche($doctrine, $mois){
             
         }
     }

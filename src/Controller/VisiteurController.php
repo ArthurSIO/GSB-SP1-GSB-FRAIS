@@ -156,7 +156,13 @@ class VisiteurController extends AbstractController
             $laDate = $jma[2] . "-" . $jma[1] . "-" . $jma[0];
             $entityManager = $this->getDoctrine()->getManager();
             $doctrine = $this -> getDoctrine();
+            $repositoryObjet = $doctrine -> getRepository(Visiteur::class);
+            $leVis = $repositoryObjet->find($idVis);
+            $repositoryObjet = $doctrine -> getRepository(Fichefrais::class);
             $date = $fonctionVis->creerDate();
+            $ff = $repositoryObjet->findFicheVis($date,$leVis);
+            dump($ff[0]);
+            //$msg = $fonctionVis->creerHorsForfait($doctrine,);
             $msg = $fonctionVis->creerHorsForfait($entityManager,$doctrine,$laDate, $data['libelle'], $data['montant'], $idVis,$date);
             $tab = $fonctionVis->getLigneHorsForfait($date, $this-> getDoctrine());
             $tab1 = $fonctionVis->getLigneFraisForfait($date, $this-> getDoctrine());
